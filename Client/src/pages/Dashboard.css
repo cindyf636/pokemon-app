@@ -1,0 +1,199 @@
+/* === Global Resets === */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+.dashboard-container {
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+/* Page Title */
+.dashboard-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Dashboard Summaries */
+.summary-section {
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+.summary-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.summary-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  flex: 1 1 280px;
+  max-width: 360px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+}
+
+.summary-card h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #646cff;
+}
+
+.summary-card p {
+  font-size: 1.4rem;
+  margin: 0.5rem 0 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.highlight-card {
+  background-color: #f0f4ff;
+  border-color: #646cff;
+  font-weight: bold;
+}
+
+.summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  text-align: left;
+}
+
+.summary-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+/* Card Grid */
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Pokémon Card */
+.pokemon-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-4px);
+}
+
+.pokemon-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.pokemon-card h2 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+}
+
+.pokemon-card table {
+  margin: 0 auto 0.5rem;
+  font-size: 0.9rem;
+}
+
+.pokemon-card td {
+  padding: 0.25rem 0.5rem;
+  vertical-align: top;
+}
+
+.pokemon-card td:first-child {
+  font-weight: bold;
+  text-align: right;
+  width: 40%;
+}
+
+/* === View Profile Button === */
+.pokemon-card a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #646cff;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.pokemon-card a:hover {
+  background-color: #4a52c5;
+}
+
+/* === Pagination === */
+.pagination-controls {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.pagination-controls button {
+  padding: 0.5rem 1rem;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.pagination-controls button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  font-weight: bold;
+  margin: 0 1rem;
+}
+
+.pagination-button {
+  padding: 0.5rem 1rem;
+  background-color: #646cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.pagination-button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
