@@ -5,11 +5,14 @@ import "./Dashboard.css";
 import FilterBar from "./FilterBar";
 
 export default function Dashboard() {
+  // State variables
   const [summary, setSummary] = useState(null);
   const [allPokemon, setAllPokemon] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [page, setPage] = useState(1);
   const pageSize = 25;
+  const [selectedSort, setSelectedSort] = useState(null);
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
 
   // Filter states
   const [filterNumber, setFilterNumber] = useState("");
@@ -32,7 +35,7 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    const filteredResults = allPokemon.filter((p) => {
+    let filteredResults = allPokemon.filter((p) => {
       const matchesNumber = p.number.toString().includes(filterNumber.trim());
       const matchesName = p.name
         .toLowerCase()
@@ -50,8 +53,29 @@ export default function Dashboard() {
       );
     });
 
+    // Sorting logic
+    if (sortConfig.key) {
+      filteredResults = [...filteredResults].sort((a, b) => {
+        let aVal = a[sortConfig.key];
+        let bVal = b[sortConfig.key];
+
+        if (sortConfig.key === "movesCount") {
+          aVal = a.moves?.length || 0;
+          bVal = b.moves?.length || 0;
+        }
+
+        if (typeof aVal === "number") {
+          return sortConfig.direction === "asc" ? aVal - bVal : bVal - aVal;
+        } else {
+          return sortConfig.direction === "asc"
+            ? String(aVal).localeCompare(String(bVal))
+            : String(bVal).localeCompare(String(aVal));
+        }
+      });
+    }
+
     setFiltered(filteredResults);
-    setPage(1); // Reset to first page when filters change
+    setPage(1);
   }, [
     filterNumber,
     filterName,
@@ -59,6 +83,7 @@ export default function Dashboard() {
     filterGeneration,
     filterMove,
     allPokemon,
+    sortConfig,
   ]);
 
   const currentPageData = filtered.slice(
@@ -87,7 +112,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <h1 className="dashboard-title">Adopt a Pokémon</h1>
+      <h1 className="dashboard-title">Pokémon Dashboard</h1>
 
       {/* Summary */}
       {summary && (
@@ -143,6 +168,9 @@ export default function Dashboard() {
         setFilterMove={setFilterMove}
         uniqueTypes={uniqueTypes}
         uniqueGenerations={uniqueGenerations}
+        selectedSort={selectedSort}
+        setSelectedSort={setSelectedSort}
+        setSortConfig={setSortConfig}
       />
 
       {/* Grid */}
@@ -152,27 +180,43 @@ export default function Dashboard() {
           <div key={p.number} className="pokemon-card">
             <img src={p.imageUrl} alt={p.name} />
             <h2>{p.name}</h2>
+            {/* Table Columns */}
             <table>
               <tbody>
+                {/* Number */}
                 <tr>
                   <td>#</td>
                   <td>{p.number}</td>
                 </tr>
-                <tr>
-                  <td>Region</td>
-                  <td>{p.region}</td>
-                </tr>
+                {/* Generation */}
                 <tr>
                   <td>Gen</td>
                   <td>{p.generation}</td>
                 </tr>
+                {/* Height */}
+                <tr>
+                  <td>Height</td>
+                  <td>{p.height}</td>
+                </tr>
+                {/* Weight */}
+                <tr>
+                  <td>Weight</td>
+                  <td>{p.weight}</td>
+                </tr>
+                {/* Type 1 */}
                 <tr>
                   <td>Type 1</td>
                   <td>{p.type1}</td>
                 </tr>
+                {/* Type 2 */}
                 <tr>
                   <td>Type 2</td>
                   <td>{p.type2 || "-"}</td>
+                </tr>
+                {/* Moves */}
+                <tr>
+                  <td>Moves</td>
+                  <td>{p.moves?.length || 0}</td>
                 </tr>
               </tbody>
             </table>

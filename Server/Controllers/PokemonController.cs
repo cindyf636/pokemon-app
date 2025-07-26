@@ -48,11 +48,10 @@ namespace PokemonApp.Controllers
                 p.Number,
                 p.Name,
                 p.Generation,
-                p.Region,
                 p.Height,
                 p.Weight,
-                type1 = p.Types.FirstOrDefault(),
-                type2 = p.Types.Skip(1).FirstOrDefault(),
+                type1 = p.Types?.FirstOrDefault(),
+                type2 = p.Types?.Skip(1).FirstOrDefault(),
                 imageUrl = p.Image,
                 moves = p.Moves
             });
@@ -92,11 +91,10 @@ namespace PokemonApp.Controllers
                 match.Number,
                 match.Name,
                 match.Generation,
-                match.Region,
                 match.Height,
                 match.Weight,
-                type1 = match.Types.FirstOrDefault(),
-                type2 = match.Types.Skip(1).FirstOrDefault(),
+                type1 = match.Types?.FirstOrDefault(),
+                type2 = match.Types?.Skip(1).FirstOrDefault(),
                 imageUrl = match.Image,
                 match.Moves,
                 evolvesFrom,
@@ -110,11 +108,11 @@ namespace PokemonApp.Controllers
         public ActionResult GetSummary()
         {
             var countsByGeneration = _pokemon
-                .GroupBy(p => p.Generation)
+                .GroupBy(p => p.Generation ?? "Unknown")
                 .ToDictionary(g => g.Key, g => g.Count());
 
             var countsByType = _pokemon
-                .SelectMany(p => p.Types)
+                .SelectMany(p => p.Types ?? new List<string>())
                 .GroupBy(t => t)
                 .ToDictionary(g => g.Key, g => g.Count());
 
@@ -126,14 +124,6 @@ namespace PokemonApp.Controllers
             };
 
             return Ok(summary);
-        }
-
-        [HttpGet("name/{number}")]
-        public ActionResult GetNameByNumber(int number)
-        {
-            var match = _pokemon.FirstOrDefault(p => p.Number == number);
-            if (match == null) return NotFound();
-            return Ok(new { match.Number, match.Name });
         }
     }
 }

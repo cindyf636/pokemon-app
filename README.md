@@ -1,25 +1,24 @@
-# Adopt A Pokémon
+# Pokémon Dashboard
 
-## 📚 Table of Contents
-- [📄 Description](#-description)  
-- [⚙️ Installation](#️-installation)  
-- [🚀 Usage](#-usage)  
-- [🛠️ Technologies Used](#️-technologies-used)
-
----
-
-## 📄 Description
-
-The **Pokémon Adoption Web App** is a full-stack application that lets users browse, filter, and explore Pokémon in a fun, adoption-themed interface. It includes detailed profiles for each Pokémon, summary analytics, and interactive evolution chains. The app is built with a **React frontend** and an **ASP.NET Core Web API backend**, powered by Pokémon data from a JSON dataset.
+## Table of Contents
+- [Description](#-description)  
+- [Installation](#️-installation)  
+- [Usage](#-usage)  
+- [Technologies Used](#️-technologies-used)
 
 ---
 
-## ⚙️ Installation
+## Description
+
+Oh no! Pokemons have magically come to life and are running rampant across the globe! Curious to see which one you've caught, look no further! This application, created for the Kalderos Surface Engineeering take-home provides you all the information you could hope for, right at your fingertips. Filter by height, weight, name, type, etc. 
+---
+
+## Installation
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/pokemon-adoption-app.git
-cd pokemon-adoption-app
+git clone https://github.com/cindyf636/pokemon-app.git
+cd pokemon-app
 ```
 
 ### 2. Install and run the backend (ASP.NET Core)
@@ -41,7 +40,7 @@ npm run dev
 
 ---
 
-## 🚀 Usage
+## Usage
 
 Once both servers are running:
 
@@ -51,35 +50,16 @@ Once both servers are running:
   - Filter Pokémon by number, name, type, generation, or move
   - Browse Pokémon cards (25 per page)
   - Click a Pokémon to view detailed information
+![alt text](Dashboard.png)
 - On the **details page**, you can:
   - See stats, moves, evolution info, and image
   - Navigate to previous or next evolutions via clickable links
   - Return to the dashboard with a single button
-
-### Production Deployment
-
-To serve the React app from the backend:
-
-1. Build the frontend:
-   ```bash
-   npm run build
-   ```
-2. Copy the build folder (`dist/` or `build/`) into:
-   ```
-   server/wwwroot/
-   ```
-3. Ensure this line is in your `Program.cs`:
-   ```csharp
-   app.MapFallbackToFile("index.html");
-   ```
-4. Publish the backend:
-   ```bash
-   dotnet publish -c Release
-   ```
+![alt text](Details.png)
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 **Frontend:**
 - React

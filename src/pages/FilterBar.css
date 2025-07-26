@@ -13,7 +13,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* === Unified styling for inputs and selects === */
+/*  Unified styling for inputs and selects */
 .filter-bar input,
 .filter-bar select {
   padding: 0.5rem 0.75rem;
@@ -28,7 +28,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* === Focus/hover effects === */
+/* Focus/hover effects */
 .filter-bar input:focus,
 .filter-bar select:focus {
   outline: none;

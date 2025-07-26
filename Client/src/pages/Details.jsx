@@ -48,7 +48,6 @@ export default function Details() {
       <p>Type 1: {pokemon.type1}</p>
       <p>Type 2: {pokemon.type2 || "-"}</p>
       <p>Generation: {pokemon.generation}</p>
-      <p>Region: {pokemon.region}</p>
       <p>Height: {pokemon.height}</p>
       <p>Weight: {pokemon.weight}</p>
       <p>Moves: {pokemon.moves.join(", ")}</p>
