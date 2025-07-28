@@ -138,7 +138,7 @@ body {
   width: 40%;
 }
 
-/* === View Profile Button === */
+/*  View Profile Button */
 .pokemon-card a {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -155,7 +155,7 @@ body {
   background-color: #4a52c5;
 }
 
-/* === Pagination === */
+/* Pagination */
 .pagination-controls {
   margin-top: 2rem;
   text-align: center;
