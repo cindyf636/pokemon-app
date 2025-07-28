@@ -21,13 +21,20 @@ git clone https://github.com/cindyf636/pokemon-app.git
 cd pokemon-app
 ```
 
-### 2. Install and run the backend (ASP.NET Core)
+### 2. Install .NET SDK(if not already installed)
+You need .NET 8 SDK to run the backend.
+To check if it's already installed:
 ```bash
-cd server
-dotnet run
+dotnet --version
 ```
+If you don't have it:
+- macOS(via Homebrew)
+```bash
+brew install --cask dotnet-sdk
+```
+- Windows/Linux
+Visit: https://dotnet.microsoft.com/download
 
-> The backend API will be served at: `http://localhost:5210`
 
 ### 3. Install and run the frontend (React)
 ```bash
@@ -37,6 +44,14 @@ npm run dev
 ```
 
 > The frontend will run at: `http://localhost:5173` (or whichever port Vite chooses)
+
+### 3. Run the backend server
+```bash
+cd ../Server
+dotnet run
+```
+
+> Backend runs on: http://localhost:5210
 
 ---
 
